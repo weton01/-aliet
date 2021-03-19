@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: aliet/auth
+          image: aliet-auth
           env:
             - name: MONGO_URI
               value: 'mongodb://auth-mongo-aliet-srv:27017/auth'

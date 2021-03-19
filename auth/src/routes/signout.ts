@@ -6,7 +6,9 @@ const router = express.Router();
 router.post(
     '/api/users/signout', 
     async ( req: Request, res: Response ) => { 
-        return res.status(200).send('User signout')
+        req.session = null;
+      
+        res.send(req.session);
     }
 )
 
