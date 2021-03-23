@@ -9,7 +9,7 @@ function FormLabel (children, required, optional) {
     
     return ( 
         <div className={formlabelClassName(required)}>
-            {children} {(required || !optional) || "(opcional)"}
+            {children} 
         </div>
     )
 }

@@ -3,7 +3,8 @@ function LadingPage () {
 
     return (
         <div>
-            welcome to init
+            Bem vindo gazinho
+            sds asd asa
         </div>
     )
 }

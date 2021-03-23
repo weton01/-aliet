@@ -1,6 +1,6 @@
-import './styles.scss'
- 
-import SigninModal from 'modules/auth/components/signin-modal/signin-modal.component'
+ import SigninModal from 'modules/auth/components/signin-modal/signin-modal.component';
+
+import './styles.scss';
 
 
 function SigninPage() {

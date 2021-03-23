@@ -1,18 +1,15 @@
 import { Form, Row, Col, Input, Checkbox, Button } from 'antd';
 
 import Paper from 'core/components/paper/paper.component'
-import Info from 'core/components/info/info.component'
-
+ 
 import {FormLabel} from 'core/components/form-label/form-label.component'
 
-import './signin-modal.styles.scss'
+import './signup-modal.styles.scss'
 
-function SigninModal () { 
-
-    const passsword_desc = `Sua senha deve ter entre 6 e 20 caracteres. Não coloque seu nome, sobrenome, e-mail nem caracteres idênticos e consecutivos.`;
+function SignupModal () { 
 
     return (
-        <section className="sigin-modal-style">
+        <section className="sigup-modal-style">
             <header className="form-register-header">
                 <h2>
                     Dados Pessoais
@@ -79,4 +76,4 @@ function SigninModal () {
        )
 }
 
-export default SigninModal
+export default SignupModal
