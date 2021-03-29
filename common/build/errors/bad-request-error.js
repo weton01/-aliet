@@ -7,20 +7,28 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CustomError = void 0;
-var CustomError = /** @class */ (function (_super) {
-    __extends(CustomError, _super);
-    function CustomError(message) {
+exports.BadRequestError = void 0;
+var custom_error_1 = require("./custom-error");
+var BadRequestError = /** @class */ (function (_super) {
+    __extends(BadRequestError, _super);
+    function BadRequestError(message) {
         var _this = _super.call(this, message) || this;
-        Object.setPrototypeOf(_this, CustomError.prototype);
+        _this.message = message;
+        _this.statusCode = 400;
+        Object.setPrototypeOf(_this, BadRequestError.prototype);
         return _this;
     }
-    return CustomError;
-}(Error));
-exports.CustomError = CustomError;
+    BadRequestError.prototype.serializeErrors = function () {
+        return [{ message: this.message }];
+    };
+    return BadRequestError;
+}(custom_error_1.CustomError));
+exports.BadRequestError = BadRequestError;
