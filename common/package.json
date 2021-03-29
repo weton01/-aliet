@@ -1,6 +1,6 @@
 {
   "name": "@aliet/common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "clean": "del ./build/* -f",
-    "build": "npm run clean",
+    "build": "npm run clean && tsc",
     "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish -access-"
   },
   "keywords": [],
@@ -17,7 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "del-cli": "^3.0.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.9"
   },
   "dependencies": {
     "@types/cookie-session": "^2.0.39",
@@ -26,6 +26,7 @@
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "tsc": "^1.20150623.0"
   }
 }
