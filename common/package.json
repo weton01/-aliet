@@ -1,6 +1,6 @@
 {
   "name": "@aliet/common",
-  "version": "1.0.5",
+  "version": "1.0.3",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "clean": "del ./build/* -f",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean",
     "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish -access-"
   },
   "keywords": [],
