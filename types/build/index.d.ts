@@ -1,2 +1,4 @@
-export * from "./events/user-types";
-export * from "./interfaces/user-interfaces";
+export * from "./types/user";
+export * from "./interfaces/user";
+export * from "./types/product";
+export * from './interfaces/product';
