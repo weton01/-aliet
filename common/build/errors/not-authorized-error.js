@@ -13,23 +13,19 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RequestValidationError = void 0;
+exports.NotAuthorizedError = void 0;
 var custom_error_1 = require("./custom-error");
-var RequestValidationError = /** @class */ (function (_super) {
-    __extends(RequestValidationError, _super);
-    function RequestValidationError(errors) {
-        var _this = _super.call(this, 'Invalid request parameters') || this;
-        _this.errors = errors;
-        _this.statusCode = 400;
-        // Only because we are extending a built in class
-        Object.setPrototypeOf(_this, RequestValidationError.prototype);
+var NotAuthorizedError = /** @class */ (function (_super) {
+    __extends(NotAuthorizedError, _super);
+    function NotAuthorizedError() {
+        var _this = _super.call(this, 'Not Authorized') || this;
+        _this.statusCode = 401;
+        Object.setPrototypeOf(_this, NotAuthorizedError.prototype);
         return _this;
     }
-    RequestValidationError.prototype.serializeErrors = function () {
-        return this.errors.map(function (err) {
-            return { message: err.msg, field: err.param };
-        });
+    NotAuthorizedError.prototype.serializeErrors = function () {
+        return [{ message: 'Not authorized' }];
     };
-    return RequestValidationError;
+    return NotAuthorizedError;
 }(custom_error_1.CustomError));
-exports.RequestValidationError = RequestValidationError;
+exports.NotAuthorizedError = NotAuthorizedError;
