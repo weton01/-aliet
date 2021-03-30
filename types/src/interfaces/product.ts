@@ -6,4 +6,5 @@ export interface ProductAttrs {
   value: number;
   type: ProductsTypes;
   active: boolean;
+  images: string[];
 }
