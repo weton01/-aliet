@@ -1,18 +1,6 @@
 import mongoose from 'mongoose';
 import { Password } from '../services/password';
-import { UserTypes } from '../events/types/user-types';
-
-// An interface that describes the properties
-// that are requried to create a new User
-interface UserAttrs {
-    email: string;
-    password: string;
-    name: string;
-    lastName: string;
-    cpf: string;
-    type: string;
-    active: boolean;
-}
+import { UserTypes, UserAttrs } from '@aliet/types';
 
 // An interface that describes the properties
 // that a User Document has
@@ -20,7 +8,7 @@ interface UserDoc extends mongoose.Document {
     email: string;
     password: string;
     name: string;
-    lastName: string;
+    last_name: string;
     cpf: string;
     type: string;
     active: boolean;
@@ -46,7 +34,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required:  true
         },
-        lastName: {
+        last_name: {
             type: String,
             required: true
         },

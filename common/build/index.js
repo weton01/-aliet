@@ -13,7 +13,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./errors/bad-request-error"), exports);
 __exportStar(require("./errors/custom-error"), exports);
 __exportStar(require("./errors/request-validation-error"), exports);
-__exportStar(require("./events/types/user-types"), exports);
 __exportStar(require("./middlewares/current-user"), exports);
 __exportStar(require("./middlewares/error-handler"), exports);
 __exportStar(require("./middlewares/validate-request"), exports);

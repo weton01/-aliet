@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: auth
 spec:
   replicas: 1
   selector:
@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: auth
-          image: aliet-auth
+          image: weton01/auth:v14
           env:
             - name: MONGO_URI
-              value: 'mongodb://auth-mongo-aliet-srv:27017/auth'
+              value: "mongodb://auth-mongo-aliet-srv:27017/auth"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

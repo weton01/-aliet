@@ -1,15 +1,11 @@
-import express, { Request, Response } from 'express';
-import { body } from 'express-validator';
+import express, { Request, Response } from "express";
 
 const router = express.Router();
 
-router.post(
-    '/api/users/signout', 
-    async ( req: Request, res: Response ) => { 
-        req.session = null;
-      
-        res.send(req.session);
-    }
-)
+router.post("/api/users/signout", async (req: Request, res: Response) => {
+  req.session = null;
+
+  res.send(req.session);
+});
 
 export { router as signoutRouter };

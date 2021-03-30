@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: aliet.dev
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
