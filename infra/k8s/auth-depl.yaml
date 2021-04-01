@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: auth
+  namespace: "prod"
 spec:
   replicas: 1
   selector:
@@ -14,7 +15,9 @@ spec:
     spec:
       containers:
         - name: auth
-          image: weton01/auth:v14
+          image: weton01/auth:v15
+          ports:
+            - containerPort: 3000
           env:
             - name: MONGO_URI
               value: "mongodb://auth-mongo-aliet-srv:27017/auth"
@@ -23,16 +26,18 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: auth-srv
+  namespace: "prod" 
 spec:
   selector:
     app: auth
   ports:
-    - name: auth
-      protocol: TCP
-      port: 3000
+    - port: 80
       targetPort: 3000
+      protocol: TCP
+  type: NodePort

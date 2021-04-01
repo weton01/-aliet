@@ -1,38 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: products-depl
+  name: product
+  namespace: "prod"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: products
+      app: product
   template:
     metadata:
       labels:
-        app: products
+        app: product
     spec:
       containers:
-        - name: products
-          image: aliet-products
+        - name: product
+          image: weton01/product:v1
+          ports:
+            - containerPort: 3000
           env:
             - name: MONGO_URI
-              value: 'mongodb://products-mongo-aliet-srv:27017/auth'
+              value: "mongodb://product-mongo-aliet-srv:27017/auth"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: products-srv
+  name: product-srv
+  namespace: "prod" 
 spec:
   selector:
-    app: products
+    app: product
   ports:
-    - name: products
-      protocol: TCP
-      port: 3000
+    - port: 80
       targetPort: 3000
+      protocol: TCP
+  type: NodePort

@@ -1,15 +1,24 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-srv
+  name: "aliet-ingress"
+  namespace: "prod"
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+  labels:
+    app: aliet-ingress
 spec:
   rules:
-    - host: aliet.dev
-      http:
+    - http:
         paths:
-          - path: /api/users/?(.*)
+          - path: /api/users/*
+            pathType: Prefix
             backend:
               serviceName: auth-srv
-              servicePort: 3000
+              servicePort: 80
+          - path: /api/products/*
+            pathType: Prefix
+            backend:
+              serviceName: product-srv
+              servicePort: 80

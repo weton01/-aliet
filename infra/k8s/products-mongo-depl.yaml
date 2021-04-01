@@ -1,28 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: products-mongo-depl
+  name: product-mongo-depl
+  namespace: "prod"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: products-mongo
+      app: product-mongo
   template:
     metadata:
       labels:
-        app: products-mongo
+        app: product-mongo
     spec:
       containers:
-        - name: products-mongo
+        - name: product-mongo
           image: mongo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: products-mongo-aliet-srv
+  name: product-mongo-aliet-srv
+  namespace: "prod"
 spec:
   selector:
-    app: products-mongo
+    app: product-mongo
   ports:
     - name: db
       protocol: TCP
