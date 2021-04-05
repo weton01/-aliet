@@ -18,6 +18,7 @@ app.use(json());
 
 app.use(
   cookieSession({
+    name: 'auth-cookie',
     signed: false,
     secure: false,
   })

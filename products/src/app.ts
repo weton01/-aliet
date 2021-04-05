@@ -3,7 +3,7 @@ import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import "express-async-errors";
 
-import { errorHandler } from "@aliet/common";
+import { errorHandler, currentUser } from "@aliet/common";
 
 import { indexProductRouter } from "./routes/index";
 import { newProductRouter } from "./routes/new";
@@ -17,10 +17,13 @@ app.use(json());
 
 app.use(
   cookieSession({
+    name: "auth-cookie",
     signed: false,
-    secure: true,
+    secure: false,
   })
 );
+
+app.use(currentUser);
 
 app.use(indexProductRouter);
 app.use(newProductRouter);

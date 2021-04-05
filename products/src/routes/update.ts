@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import { param, body } from "express-validator";
-import { UserTypes } from "@aliet/types";
 import {
   requireAuth,
   validateRequest,

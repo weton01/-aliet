@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
         - name: product
-          image: weton01/product:v1
+          image: weton01/product:v12
           ports:
             - containerPort: 3000
           env:
             - name: MONGO_URI
-              value: "mongodb://product-mongo-aliet-srv:27017/auth"
+              value: "mongodb://product-mongo-aliet-srv:27017/product"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

@@ -6,6 +6,7 @@ import { ProductsTypes } from "@aliet/types";
 import { Product } from "../models/product";
 
 const router = express.Router();
+const productTypes : string[] = Object["values"](ProductsTypes)
 
 const validators = [
   body("name").not().isEmpty().withMessage("name is required"),
@@ -15,8 +16,7 @@ const validators = [
     .isFloat({ gt: 0 })
     .withMessage("quantity must be greater than 0"),
   body("type")
-    .isString()
-    .custom((v) => v in ProductsTypes),
+    .isString().isIn(productTypes),
 ];
 
 router.post(
