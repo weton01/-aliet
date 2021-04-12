@@ -1,8 +1,6 @@
 import express, { Request, Response } from "express";
 import { requireAuth, adminAuth } from "@aliet/common";
 
-import { Product } from "../models/product";
-
 const router = express.Router();
 
 router.get(
@@ -10,10 +8,7 @@ router.get(
   requireAuth,
   adminAuth,
   async (req: Request, res: Response) => {
-    
-    const products = await Product.find({active: true});
-
-    res.send(products || []);
+ 
   }
 );
 

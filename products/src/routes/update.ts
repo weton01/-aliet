@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { param, body } from "express-validator";
+import mongoose from "mongoose";
 import {
   requireAuth,
   validateRequest,
@@ -10,11 +11,14 @@ import {
 import { Product } from "../models/product";
 
 const router = express.Router();
+const objectId = mongoose.Types.ObjectId;
 
 const validators = [
-  param("id").notEmpty().withMessage("id is required param"),
-  body("images").isArray().notEmpty(),
-  body("active").isBoolean().notEmpty(),
+  param("id").notEmpty()
+  .custom((value) => objectId.isValid(value))
+  .withMessage("id is required param"),
+  body("images").isArray().notEmpty().withMessage("images are required"),
+  body("active").isBoolean().notEmpty().withMessage("active is required param"),
   body("value").isFloat({ gt: 0 }).withMessage("value must be greater than 0"),
   body("quantity")
     .isFloat({ gt: 0 })

@@ -1,12 +1,19 @@
 import express, { Request, Response } from "express";
 import { param } from "express-validator";
-import { requireAuth, validateRequest } from "@aliet/common";
+import { requireAuth, validateRequest, NotFoundError } from "@aliet/common";
+import mongoose from "mongoose";
 
 import { Product } from "../models/product";
 
 const router = express.Router();
+const objectId = mongoose.Types.ObjectId;
 
-const validators = [param("id").notEmpty().withMessage("id is required param")];
+const validators = [
+  param("id")
+    .notEmpty()
+    .custom((value) => objectId.isValid(value))
+    .withMessage("id is required param"),
+];
 
 router.get(
   "/api/products/:id",
@@ -18,7 +25,9 @@ router.get(
 
     const product = await Product.findById(id);
 
-    res.status(200).send(product || {});
+    if (!product) throw new NotFoundError();
+
+    res.status(200).send(product);
   }
 );
 
