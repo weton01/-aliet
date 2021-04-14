@@ -23,3 +23,5 @@ __exportStar(require("./middlewares/admin-auth"), exports);
 __exportStar(require("./events/base-listener"), exports);
 __exportStar(require("./events/base-publisher"), exports);
 __exportStar(require("./events/subjects"), exports);
+__exportStar(require("./events/user-created-event"), exports);
+__exportStar(require("./events/user-updated-event"), exports);
