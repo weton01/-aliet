@@ -1,13 +1,13 @@
 export interface AnswearAttrs {
   description: string;
   created_at: Date;
-  user: string;
+  user_id: string;
 }
 
 export interface CommentAttrs {
   like: string[];
   description: string;
-  user: string;
+  user_id: string;
   created_at: Date;
   answears: AnswearAttrs[];
 }
