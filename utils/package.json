@@ -9,8 +9,9 @@
   ],
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "clean": "del ./build/*",
+    "clean": "del ./build/* -f",
     "build": "npm run clean && tsc",
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish",
     "doc": "jsdoc -c jsdoc.json"
   },
   "keywords": [

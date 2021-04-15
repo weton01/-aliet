@@ -16,7 +16,7 @@ export class DateUtil {
     }
 
     private formatZero(str: string) {
-        if(str.length > 1)
+        if(str?.length > 1)
             return str
         return `0${str}`
     }
@@ -130,12 +130,9 @@ export class DateUtil {
     public formatBRL() {
         this.__date.setUTCFullYear(this.__date.getFullYear());
         this.__date.setUTCMonth(this.__date.getMonth());
-        const date = this.__date.toLocaleDateString(this.__locale).split('-')
+        const date = this.__date.toLocaleDateString(this.__locale);
 
-        const day = this.formatZero(date[2]);
-        const month = this.formatZero(date[1]);
- 
-        return `${day}/${month}/${this.__date.getFullYear()}`
+        return date
     }
 
     /**
@@ -163,6 +160,26 @@ export class DateUtil {
      */    
     public formatUnixToDate(unix_timestamp: number) { 
         return new Date(unix_timestamp * 1000);
+    }
+
+    /**
+     * Função que converte um query type de data
+     * ```typescript
+     * const now = new Date();
+     * const date = new DateUtil(now);
+     * console.log(date.formatDateToUnix()) // 2021-03-18T18:56:05.000Z
+     * ```
+     * @returns Retorna a data com todos no formato 2021-03-18T18:56:05.000Z
+     */    
+    public formatDateToQuery() { 
+        this.__date.setUTCFullYear(this.__date.getFullYear());
+        this.__date.setUTCMonth(this.__date.getMonth());
+        const date = this.__date.toLocaleDateString(this.__locale).split('/')
+
+        const day = this.formatZero(date[0]);
+        const month = this.formatZero(date[1]);
+
+        return `${this.__date.getFullYear()}-${month}-${day}`
     }
  
     /**
