@@ -1,0 +1,16 @@
+export const icons = {
+  1: "/icons/alien-1.png",
+  2: "/icons/alien-2.png",
+  3: "/icons/alien-3.png",
+  4: "/icons/alien-4.png",
+  5: "/icons/alien-5.png",
+  6: "/icons/alien-ship-2.png",
+  7: "/icons/alien-ship-beam.png",
+  8: "/icons/alien-ship.png",
+  9: "/icons/astronaut-helmet.png",
+  10: "/icons/atronaut.png",
+  11: "/icons/brain-slug.png",
+  12: "/icons/rocket.png",
+  13: "/icons/space-invader.png",
+  14: "/icons/star.png",
+};

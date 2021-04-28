@@ -1,0 +1,27 @@
+@import "../../../styles/vars.less";
+
+.menu-mobile { 
+    width: 100vw;
+    height: 550px;
+    display: none !important;
+    background: white;
+
+    border-top: 1px solid #f0f0f0;
+
+    .menu-item { 
+        padding: 0px 16px;;
+        font-size: 14px;
+
+        .menu-item-icon { 
+            font-size: 24px !important;
+        }
+    }
+}
+
+.menu-visible { 
+    display: block !important ;
+
+    @media screen and (min-width: @size-sm) {
+        display: none !important;
+    }
+}

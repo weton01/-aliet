@@ -1,0 +1,28 @@
+@import "~antd/dist/antd.less";
+@import "../../../core/styles/vars.less";
+
+.form-singin {
+  width: 360px;
+
+  @media screen and (max-width: @size-xs) {
+    width: 100%;
+  }
+
+  .signin-input-icon {
+    color: @primary-color;
+  }
+
+  .signin-btn {
+    width: 100%;
+  }
+
+  .social-icon {
+    font-size: 20px;
+    border-radius: 50% !important;
+    color: rgba(0, 0, 0, 0.45);
+
+    :hover {
+      color: @primary-color;
+    }
+  }
+}

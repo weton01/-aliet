@@ -1,5 +1,5 @@
 import express from "express";
-import { json } from "body-parser";
+import cors from 'cors';
 import cookieSession from "cookie-session";
 import "express-async-errors";
 
@@ -13,14 +13,24 @@ import { errorHandler } from "@aliet/common";
 
 const app = express();
 
+app.use(express.json());
+
 app.set("trust proxy", true);
-app.use(json());
 
 app.use(
   cookieSession({
-    name: 'auth-cookie',
+    name: "auth",
     signed: false,
-    secure: false,
+    secure: true,
+    sameSite: "none"
+  })
+);
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+    credentials: true,
   })
 );
 

@@ -1,26 +1,31 @@
-import { useRouter } from 'next/router'
- 
-import DefaultNavbar from './signin-nav.component'
+import React from "react";
+import { useRouter } from "next/router";
 
-import './navbar.styles.scss';
+import Link from "core/components/active-link/active-link.component";
+import NavUser from "./navbar-user.component";
 
-function Navbar () {
-    const router = useRouter()
+import "./navbar.styles.less";
 
-    const getNavbar = (route) => { 
-        if(route === '/auth/signin') 
-            return <></>
-        return <DefaultNavbar/>
-    }
+function Navbar({}) {
+  const router = useRouter();
 
-    return ( 
-        <nav className="header-aliet">
-            <div className="nav-aliet">
-                <div className="nav-icon"/>
-                {getNavbar(router.pathname)}
-            </div>
-        </nav>
-    )
+  const getNavbar = (route) => {
+    if (route === "/signin" || route === "/signup") return <></>;
+    return <NavUser />;
+  };
+
+  return (
+    <nav className="navbar-style justify-center">
+      <div className="navbar-content justify-between align-center ">
+        <Link href="/">
+          <div className="navbar-logo column-center">
+            Aliet <br /> <span>Tecidos atacado</span>
+          </div>
+        </Link>
+        {getNavbar(router.pathname)}
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: product
-          image: weton01/product:v16
+          image: weton01/product:1.0.2
           ports:
             - containerPort: 3000
           env:

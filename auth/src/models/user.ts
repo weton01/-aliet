@@ -20,6 +20,7 @@ interface UserModel extends mongoose.Model<UserDoc> {
     build(attrs: UserAttrs): UserDoc;
 }
 
+
 const userSchema = new mongoose.Schema(
     {
         email: {
@@ -75,6 +76,8 @@ userSchema.pre('save', async function(done) {
 });
 
 userSchema.statics.build = (attrs: UserAttrs) => {
+    console.log('mongoose type', mongoose.connection.readyState)
+
     return new User(attrs);
 };
  

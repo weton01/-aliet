@@ -1,0 +1,111 @@
+@import "~antd/dist/antd.less";
+@import "../../styles/vars.less";
+
+.navbar-style {
+  height: @navbar-height;
+  width: 100%;
+  padding: 0px 12px;
+  background: white;
+  color: @text-color;
+  box-shadow: inset 0px -1px 0px #F0F0F0;
+  
+  .navbar-content {
+    width: 1200px;
+    height: 100%;
+    gap: 16px;
+
+    @media screen and (max-width: @size-sm) {
+      gap: 12px;
+    }
+
+    .navbar-logo {
+      width: 125px;
+      height: 100%;
+      font-size: 16px;
+      font-style: italic;
+      color: @primary-color;
+      letter-spacing: 1px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+
+      @media screen and (max-width: @size-sm) {
+        width: 35px;
+      }
+
+      span {
+        font-size: 12px;
+        color: @text-color;
+        font-weight: normal;
+        letter-spacing: 0px;
+
+        @media screen and (max-width: @size-sm) {
+          display: none;
+        }
+      }
+    }
+
+    .ant-input-group-addon:first-child {
+      @media screen and (max-width: @size-sm) {
+        display: none !important;
+      }
+    }
+
+    .navbar-search-category {
+      width: 125px;
+    }
+
+    .navbar-search-input {
+      width: 100%;
+    }
+
+    .navbar-icon {
+      padding: 0px 4px;
+      font-size: 22px;
+    }
+
+    .menu-ic {
+      display: none;
+      @media screen and (max-width: @size-sm) {
+        display: block;
+      }
+    }
+
+    .options-content {
+      list-style: none;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+
+      a { 
+        color: #434343 !important;
+      }
+
+      li {
+        white-space: nowrap;
+        cursor: pointer;
+
+        .customer-style {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          cursor: pointer;
+        }
+      }
+
+      @media screen and (max-width: @size-sm) {
+        display: none;
+      }
+    }
+  }
+}
+
+.ant-popover-arrow {
+  left: none !important;
+  right: 10px !important;
+}
+
+.cart-pop-cas{
+
+}

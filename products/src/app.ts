@@ -1,5 +1,6 @@
-import express from "express";
+import express, {Request, Response, NextFunction} from "express";
 import { json } from "body-parser";
+import cors from 'cors';
 import cookieSession from "cookie-session";
 import "express-async-errors";
 
@@ -10,10 +11,16 @@ import { newProductRouter } from "./routes/new";
 import { showProductRouter } from "./routes/show";
 import { updateProductRouter } from "./routes/update";
 
+const options: cors.CorsOptions = {
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  origin: '*'
+};
+
 const app = express();
 
 app.set("trust proxy", true);
 app.use(json());
+app.use(cors(options));
 
 app.use(
   cookieSession({
@@ -24,6 +31,12 @@ app.use(
 );
 
 app.use(currentUser);
+
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  console.log(req.session);
+  next();
+})
 
 app.use(indexProductRouter);
 app.use(newProductRouter);

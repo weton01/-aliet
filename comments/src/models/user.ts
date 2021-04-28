@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { UserTypes } from "@aliet/types";
 
-interface UserAttrs extends mongoose.Document {
+interface UserAttrs  {
   name: string;
   type: string;
   active: boolean;
@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema(
       enum: Object.values(UserTypes),
       default: UserTypes.User,
     },
+    active: {
+      type: Boolean,
+      required: true
+    }
   },
   {
     toJSON: {
@@ -36,7 +40,6 @@ const userSchema = new mongoose.Schema(
         ret.id = ret._id;
         delete ret._id;
         delete ret.__v;
-        delete ret.active;
       },
     },
   }

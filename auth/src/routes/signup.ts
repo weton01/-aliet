@@ -2,10 +2,12 @@ import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
 
+import { UserTypes } from "@aliet/types";
 import { BadRequestError, validateRequest } from "@aliet/common";
-import { UserTypes } from '@aliet/types';
 
 import { User } from "../models/user";
+import { natsWrapper } from "../nats-wrapper";
+import { UserCreatedPublisher } from '../events/publishers/user-created-publisher'
 
 const router = express.Router();
 
@@ -51,7 +53,7 @@ router.post(
       {
         id: user.id,
         email: user.email,
-        type
+        type,
       },
       process.env.JWT_KEY!
     );
@@ -59,6 +61,13 @@ router.post(
     req.session = {
       jwt: userJwt,
     };
+
+    new UserCreatedPublisher(natsWrapper.client).publish({
+      id: user.id,
+      active: user.active,
+      name: user.name,
+      type: UserTypes.User
+    });
 
     res.status(201).send(user);
   }
