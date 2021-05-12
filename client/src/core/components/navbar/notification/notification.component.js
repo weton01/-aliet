@@ -7,8 +7,6 @@ import {
   SendOutlined,
 } from "@ant-design/icons";
 
-import "./notification.styles.less";
-
 const listData = [];
 
 for (let i = 0; i < 23; i++) {

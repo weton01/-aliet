@@ -13,8 +13,6 @@ import { icons } from "core/constants/icons";
 
 import { useNavbar } from "../../../providers/navbar";
 
-import "./navbar-menu-mobile.styles.less";
-
 const data_signin = [
   {
     type: "userItem",

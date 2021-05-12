@@ -4,7 +4,13 @@ const withCSS = require("@zeit/next-css");
 
 const isProd = process.env.NODE_ENV === "production";
 
-// fix: prevents error when .less files are required by node
+module.exports = {
+  webpackDevMiddleware: config => {
+    config.watchOptions.poll = 300;
+    return config;
+  }, 
+};
+
 if (typeof require !== "undefined") {
   require.extensions[".less"] = (file) => {};
 }

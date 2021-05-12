@@ -3,8 +3,6 @@ import { Button, List } from "antd";
 import { FormatNumber } from "aliet";
 import { DeleteOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
-import "./cart.styles.less";
-
 const listData = [];
 for (let i = 0; i < 6; i++) {
   listData.push({

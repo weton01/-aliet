@@ -1,31 +1,37 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
-import Link from "core/components/active-link/active-link.component";
 import NavUser from "./navbar-user.component";
-
-import "./navbar.styles.less";
 
 function Navbar({}) {
   const router = useRouter();
 
   const getNavbar = (route) => {
     if (route === "/signin" || route === "/signup") return <></>;
-    return <NavUser />;
+    return (
+      <>
+        <nav className="navbar-style justify-center">
+          <div className="navbar-content justify-between align-center ">
+            <Link href="/">
+              <div>
+              <Image
+                src={"/images/logo-ali.png"}
+                alt="logo-nav"
+                width={100}
+                height={100}
+              />
+              </div>
+            </Link>
+            <NavUser />
+          </div>
+        </nav>
+      </>
+    );
   };
 
-  return (
-    <nav className="navbar-style justify-center">
-      <div className="navbar-content justify-between align-center ">
-        <Link href="/">
-          <div className="navbar-logo column-center">
-            Aliet <br /> <span>Tecidos atacado</span>
-          </div>
-        </Link>
-        {getNavbar(router.pathname)}
-      </div>
-    </nav>
-  );
+  return getNavbar(router.pathname);
 }
 
 export default Navbar;

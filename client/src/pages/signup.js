@@ -1,21 +1,32 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Typography } from "antd";
 
-import FormSignup from "modules/auth/form-signup/form-signup.component";
+import FormSignup from "modules/auth/components/form-signup/form-signup.component";
 
 function Signup() {
+  const { Text } = Typography;
+
   return (
-    <section className="global-screen column-center gap-24 padding-16">
-      <div className="column-start gap-20">
-        <div className="justify-start align-center gap-24">
-          <Image src={"/images/logo.png"} alt="me" width={60} height={60} />
-          <h4 style={{ height: 45 }}>
-            Tecidos <br /> Atacado
-          </h4>
+    <section className="global-screen column-start-center gap-24 padding-16">
+     <div className="column-center ">
+        <div className="justify-center align-center" style={{cursor:'pointer'}}>
+          <Link href="/">
+            <div>
+              <Image
+                src={"/images/logo-ali.png"}
+                alt="me"
+                width={200}
+                height={200}
+              />
+            </div>
+          </Link>
         </div>
-        <p style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-          O novo jeitinho brasileiro de se vestir
-        </p>
+        <Text type="secondary" style={{ marginTop: -35, textAlign: 'center' }}>
+          O novo jeitinho brasileiro de se vestir. Sempre levando o melhor pra
+          você
+        </Text>
       </div>
       <FormSignup />
     </section>

@@ -1,0 +1,42 @@
+.form-signup {
+  width: 360px;
+  padding-top: 12px;
+
+  @media screen and (max-width: @size-xs) {
+    width: 100%;
+  }
+  .signup-input-icon {
+    color: @primary-color;
+  }
+
+  .form-title {
+    line-height: 45px;
+  }
+  
+  .link-head {
+    @media screen and (max-width: @size-xs) {
+      justify-content: center !important;
+    }
+  }
+
+  .link-disp-style {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
+  }
+
+  .link-button{
+    text-align: end !important;
+    padding-right: 0px !important;
+    font-size: 14px;
+    width: 100% !important; 
+
+    @media screen and (max-width: @size-xs) {
+      text-align: center !important;  
+      padding-right: 16px !important;
+
+    }
+  }
+}

@@ -20,8 +20,6 @@ import Notification from "./notification/notification.component";
 
 import { useNavbar } from "../../providers/navbar";
 
-import "./navbar.styles.less";
-
 function NavbarUser({ user = { token: false, name: "Wellington", icon: 1 } }) {
   const { Search } = Input;
   const { visible, setVisible } = useNavbar();

@@ -1,11 +1,12 @@
 import React from "react";
+import Router from 'next/router';
 
 import Navbar from "core/components/navbar/navbar.component.js";
+import Footer from "core/components/footer/footer.component.js";
 import MenuMobile from "core/components/navbar/navbar-menu-mobile/navbar-menu-mobile.component";
 import NavbarProvider from "core/providers/navbar";
 
-import "../core/styles/globals.less";
-import "../core/styles/antd.less";
+import "../styles/globals.less";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }) {
         <MenuMobile />
       </NavbarProvider>
       <Component {...pageProps} />
+      <Footer/>
     </>
   );
 }

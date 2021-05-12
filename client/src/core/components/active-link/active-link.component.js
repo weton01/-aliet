@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 
-import "./active-link.styles.less";
-
 function ActiveLink({ children, href, style }) {
   const router = useRouter();
 
@@ -11,7 +9,7 @@ function ActiveLink({ children, href, style }) {
   };
 
   return (
-    <a href={href} onClick={handleClick} style={style}>
+    <a onClick={handleClick} style={style}>
       {children}
     </a>
   );
