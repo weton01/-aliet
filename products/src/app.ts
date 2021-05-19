@@ -11,30 +11,31 @@ import { newProductRouter } from "./routes/new";
 import { showProductRouter } from "./routes/show";
 import { updateProductRouter } from "./routes/update";
 
-const options: cors.CorsOptions = {
-  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  origin: '*'
-};
-
 const app = express();
 
+app.use(express.json());
+
 app.set("trust proxy", true);
-app.use(json());
-app.use(cors(options));
 
 app.use(
   cookieSession({
-    name: "auth-cookie",
+    name: "auth",
     signed: false,
-    secure: false,
+    secure: true
+  })
+);
+
+app.use(
+  cors({
+    origin: ["https://localhost:3000"],
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+    credentials: true,
   })
 );
 
 app.use(currentUser);
 
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-  console.log(req.session);
+app.use((req: Request, res: Response, next: NextFunction) =>  {
   next();
 })
 
