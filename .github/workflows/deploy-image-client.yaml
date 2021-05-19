@@ -1,5 +1,5 @@
 
-name: deploy-client
+name: deploy-image-client
 
 
 on:
