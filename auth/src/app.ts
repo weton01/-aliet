@@ -21,14 +21,13 @@ app.use(
   cookieSession({
     name: "auth",
     signed: false,
-    secure: true,
-    sameSite: "none"
+    secure: true
   })
 );
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://localhost:3000"],
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
   })

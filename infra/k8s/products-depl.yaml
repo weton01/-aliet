@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product
-  namespace: "prod"
 spec:
   replicas: 1
   selector:
@@ -26,13 +25,12 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
-          imagePullPolicy: Always
+  
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: product-srv
-  namespace: "prod" 
 spec:
   selector:
     app: product
