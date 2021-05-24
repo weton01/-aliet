@@ -1,6 +1,6 @@
-import express, {Request, Response, NextFunction} from "express";
+import express, { Request, Response, NextFunction } from "express";
 import { json } from "body-parser";
-import cors from 'cors';
+import cors from "cors";
 import cookieSession from "cookie-session";
 import "express-async-errors";
 
@@ -21,7 +21,7 @@ app.use(
   cookieSession({
     name: "auth",
     signed: false,
-    secure: true
+    secure: true,
   })
 );
 
@@ -35,9 +35,10 @@ app.use(
 
 app.use(currentUser);
 
-app.use((req: Request, res: Response, next: NextFunction) =>  {
+app.use((req: Request, res: Response, next: NextFunction) => {
+  console.log("session", req?.session?.jwt);
   next();
-})
+});
 
 app.use(indexProductRouter);
 app.use(newProductRouter);

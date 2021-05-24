@@ -1,25 +1,21 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: ingress-srv
   annotations:
-#    ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, DELETE, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000"
-    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     kubernetes.io/ingress.class: "nginx"
+#    nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
-    - host: aliet.dev
+    - host: 34.136.62.145.nip.io
       http:
         paths:
-          - path: /api/users/
+          - path: /api/users
             backend:
               serviceName: auth-srv
               servicePort: 80
-          - path: /api/products/
+          - path: /api/products
             backend:
               serviceName: product-srv
               servicePort: 80
