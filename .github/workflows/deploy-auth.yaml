@@ -9,7 +9,6 @@ on:
       - 'auth/**'
       
 env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: aliet    # Add your cluster name here.
   GKE_ZONE: us-central1-c   # Add your cluster zone here.
 
