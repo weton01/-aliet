@@ -20,12 +20,11 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push weton01/auth
  
-      - uses: google-github-actions/get-gke-credentials@v0.2.1
+      - uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
+          CLUSTER_NAME: aliet
+          ZONE_NAME: us-central1-c
         with:
-          cluster_name: aliet
-          location: us-central1-c
-          credentials: ${{ secrets.GKE_SA_KEY }}
-          
-      - name: rollout deployments
-        run: |- 
-          kubectl rollout restart deployment/auth
+          args: rollout restart deployment/auth
