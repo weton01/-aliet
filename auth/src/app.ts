@@ -40,7 +40,7 @@ app.use(currentUserRouter);
 app.use(signupAdminRouter);
 
 app.all("*", async (req, res) => {
-  return res.status(404).send({ msg: "users route not found!!!" });
+  return res.status(404).send({ msg: "users route not found!!!!" });
 });
 
 app.use(errorHandler);
